@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router-dom"
+import { useParams , useNavigate } from "react-router-dom"
 import { CurrencyContext } from "../context/CurrencyContext"
 import "../styles/ProductPage.css"
 import Category from "../components/Category"
@@ -16,6 +16,8 @@ function ProductPage({ addToWishlist }) {
     brand: "",
     category: "",
   })
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch product details from API
@@ -35,9 +37,14 @@ function ProductPage({ addToWishlist }) {
     return <div>Loading...</div>
   }
 
+  const handleCategorySelect = (category) =>
+  {
+    navigate(`/?category=${encodeURIComponent(category)}`);
+  }
+
   return (
     <div className="product-page">
-  <Category categories={categories} setFilters={setFilters} filters={filters}/>
+  <Category categories={categories} setFilters={handleCategorySelect} filters={filters}/>
 
       <div className="product-image">
         <img src={product.image || "/placeholder.svg"} alt={product.name} />

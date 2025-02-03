@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link , useLocation} from "react-router-dom"
 import { CurrencyContext } from "../context/CurrencyContext"
 import "../styles/HomePage.css"
 import Category from "../components/Category"
@@ -16,11 +16,24 @@ function HomePage({ addToWishlist }) {
     price: "",
     color: "",
     brand: "",
-    category: "",
+    category:""
   })
   const { currency , toggleCurrency } = useContext(CurrencyContext) // Containing the currency context conatiner
+
+  const location = useLocation();
+  const isProductPage = location.pathname.startsWith("/product");
+
+  const queryParams = new URLSearchParams(location.search);
+  const categoryFromURL = queryParams.get("category");
+
   
-  
+  useEffect(() => {
+    if (categoryFromURL) {
+      setFilters((prevFilters) => ({ ...prevFilters, category: categoryFromURL }));
+    }
+  }, [categoryFromURL]);
+
+
   useEffect(() => {
     // Fetch products and categories from API
     // For now, we'll use placeholder data
@@ -42,6 +55,12 @@ function HomePage({ addToWishlist }) {
     setCategories(["Electronics", "Fashion", "Home & Garden"])
   }, [])
 
+
+ // Handle category change
+ const handleCategorySelect = (category) => {
+  setFilters((prevFilters) => ({ ...prevFilters, category }));
+};
+
   // Filtering the categories and price
   const handleFilterChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value })
@@ -59,13 +78,13 @@ function HomePage({ addToWishlist }) {
   return (
     <div className="home-page">
   <div className="hero-section">
-    <h1>Welcome to our eCommerce Store</h1>
-    <Link to="/products" className="cta-button">
+    <h1>Welcome to our Store</h1>
+    {/* <Link to="/products" className="cta-button">
       Shop Now
-    </Link>
+    </Link> */}
   </div>
 
-  <Category categories={categories} setFilters={setFilters} filters={filters}/>
+  <Category categories={categories} setFilters={handleCategorySelect} filters={filters}/>
 
   {/* New Wrapper for Sidebar + Product Grid */}
   <div className="content">
@@ -74,14 +93,7 @@ function HomePage({ addToWishlist }) {
       <button onClick={toggleCurrency}>
         {currency === "USD" ? "Switch to EUR" : "Switch to USD"}
       </button>
-      <select name="category" onChange={handleFilterChange}>
-        <option value="">All Categories</option>
-        {categories.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+      
       <input type="number" name="price" placeholder="Max Price" onChange={handleFilterChange} />
       {/* Add more filter inputs as needed */}
 
@@ -102,7 +114,8 @@ function HomePage({ addToWishlist }) {
     </div>
     </div>
 
-    {/* Product Grid (Right Side) */}
+    {/*Conditionally rendering  Product Grid (Right Side) */}
+    {!isProductPage  && (
     <div className="product-grid">
       {filteredProducts.map((product) => (
         <div key={product.id} className="product-card">
@@ -121,6 +134,7 @@ function HomePage({ addToWishlist }) {
         </div>
       ))}
     </div>
+    )}
   </div>
 </div>
 
