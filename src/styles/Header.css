@@ -1,30 +1,180 @@
+:root {
+  --dark-bg: #121212;
+  --white: #FFFFFF;
+  --primary-cta: #FF6347;
+  --secondary-btn: #4CAF50;
+  --text-hover: #FFD700;
+  --sidebar-footer-bg: #333333;
+  --input-bg: #1F1F1F;
+  --border-color: #444444;
+  --muted-text: #A9A9A9;
+  --alert-text: #FFA500;
+}
+
+/* Header Styles */
 .header {
-    display: flex;
+  background-color: var(--dark-bg);
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styles */
+.logo {
+  flex: 1;
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.logo-image {
+  width: 120px; /* Adjust as needed */
+  height: auto;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+
+/* Search Bar Styles */
+.search-bar {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px 0 0 4px;
+  background-color: var(--input-bg);
+  color: var(--white);
+}
+
+.search-bar input::placeholder {
+  color: var(--muted-text);
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-left: none;
+  background-color: var(--sidebar-footer-bg);
+  color: var(--white);
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: var(--primary-cta);
+}
+
+.header-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.header-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-buttons button:focus {
+  outline: 2px solid var(--text-hover);
+  outline-offset: 2px;
+}
+
+/* Report Invalid Option Button */
+.report-button {
+  background-color: var(--alert-text);
+  border: 2px solid var(--alert-text);
+}
+
+.report-button:hover {
+  background-color: #ff8c00;
+  border-color: #ff8c00;
+}
+
+.wishlist-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+  transform: scale(1.1); /* Increase size when hovered */
+  color: #FF6347; /* Change color on hover */
+}
+
+
+
+/* Sign Up Button */
+/* .signup-button {
+  background-color: var(--primary-cta);
+  border: 2px solid var(--primary-cta);
+}
+
+.signup-button:hover {
+  background-color: #ff4500;
+  border-color: #ff4500;
+} */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .header-buttons button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .header-buttons {
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #f0f0f0;
   }
-  
-  .dark .header {
-    background-color: #333;
-  }
-  
-  .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .search-bar input {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  
+}

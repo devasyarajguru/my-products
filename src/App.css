@@ -1,8 +1,27 @@
+/* src/components/HeroSection.css */
+
+:root {
+  /* --dark-bg: #121212; */
+  --dark-bg: rgba(0,0,0,255);
+  --white: #FFFFFF;
+  --primary-cta: #FF6347;
+  --secondary-btn: #4CAF50;
+  --text-hover: #FFD700;
+  --sidebar-footer-bg: #333333;
+  --input-bg: #1F1F1F;
+  --border-color: #444444;
+  --muted-text: #A9A9A9;
+  --alert-text: #FFA500;
+}
+
 body {
+  background-color: var(--dark-bg);
+  color: var(--white);
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+
 
 .app {
   display: flex;
@@ -10,13 +29,4 @@ body {
   min-height: 100vh;
 }
 
-.dark {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.light {
-  background-color: #ffffff;
-  color: #000000;
-}
 

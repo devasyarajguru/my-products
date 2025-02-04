@@ -1,5 +1,3 @@
-// src/components/CategorySection.js
-import React from "react";
 
 const CategorySection = ({ categories, onCategorySelect }) => {
   return (

@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import './App.css'
 
 function App() {
   return (

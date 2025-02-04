@@ -26,7 +26,7 @@ function ProductPage({ addToWishlist }) {
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    navigate(`/?category=${encodeURIComponent(category)}`); // Update URL with selected category
+    navigate(`/?category=${encodeURIComponent(category)}`); 
   };
 
   return (
@@ -41,8 +41,7 @@ function ProductPage({ addToWishlist }) {
         <h1>{product.name}</h1>
         <p>{product.description}</p>
         <p className="price">{product.price[currency]} {currency}</p>
-        <p className="rating">Rating: {product.rating}/5</p>
-        <button className="add-to-cart">Add to Cart</button>
+        <button className="buy-button">Buy on ACBuy</button>
         <button onClick={() => addToWishlist(product)}>Add to Wishlist</button>
       </div>
     </div>

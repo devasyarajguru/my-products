@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 import CategorySection from "../components/CategorySection";
 import SidebarFilters from "../components/SidebarFilters";
 import "../styles/HomePage.css";
+import HeroSection from "../components/HeroSection";
 
 function HomePage({ addToWishlist }) {
   // const [products, setProducts] = useState([]);
@@ -24,12 +25,14 @@ function HomePage({ addToWishlist }) {
   });
 
   return (
-    <div className="home-page">
-      <div className="hero-section">
-        <h1>Welcome to our Store</h1>
-      </div>
+    <>
+    <HeroSection/>
 
-      <CategorySection categories={["Electronics", "Fashion", "Home & Garden"]} onCategorySelect={handleCategorySelect} />
+    <div className="home-page">
+      {/* <div className="hero-section">
+        <h1>Welcome to our Store</h1>
+      </div> */}
+      <CategorySection categories={["Tracksuit" , "Shoes"]} onCategorySelect={handleCategorySelect} />
 
       <div className="content">
         <SidebarFilters />
@@ -49,6 +52,7 @@ function HomePage({ addToWishlist }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
