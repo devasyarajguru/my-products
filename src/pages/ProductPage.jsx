@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 import CategorySection from "../components/CategorySection";
 import SidebarFilters from "../components/SidebarFilters";
 import "../styles/ProductPage.css";
+// Testing commits
 
 function ProductPage({ addToWishlist }) {
   const [product, setProduct] = useState(null);
